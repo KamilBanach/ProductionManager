@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="banach.kam.productionManager.controller.AuthManagementController">
+    <children>
+        <TableView fx:id="authUserTable" layoutX="7.0" layoutY="7.0" prefHeight="250.0" prefWidth="686.0">
+            <columns>
+                <TableColumn fx:id="id" prefWidth="70.0" text="Id" />
+                <TableColumn fx:id="firstName" prefWidth="136.0" text="Imię" />
+                <TableColumn fx:id="lastName" prefWidth="161.0" text="Nazwisko" />
+                <TableColumn fx:id="login" prefWidth="136.0" text="Login" />
+                <TableColumn fx:id="role" prefWidth="95.0" text="Rola" />
+                <TableColumn fx:id="active" minWidth="6.0" prefWidth="87.0" text="Aktywny" />
+            </columns>
+        </TableView>
+      <Button fx:id="refreshButton" layoutX="496.0" layoutY="272.0" mnemonicParsing="false" onAction="#refreshTable" text="Odświerz">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="editButton" layoutX="412.0" layoutY="272.0" mnemonicParsing="false" onAction="#editUser" text="Edytuj">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="addButton" layoutX="332.0" layoutY="272.0" mnemonicParsing="false" onAction="#addNewUser" text="Dodaj">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="closeButton" layoutX="598.0" layoutY="272.0" mnemonicParsing="false" onAction="#close" text="Zamknij">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+    </children>
+</AnchorPane>

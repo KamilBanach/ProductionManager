@@ -1,6 +1,6 @@
 package banach.kam.productionManager.domain.enums;
 
-public enum EAuthUserRoles {
+public enum EAuthUserRole {
     ADMIN,
     DIRECTOR,
     EMPLOYEER

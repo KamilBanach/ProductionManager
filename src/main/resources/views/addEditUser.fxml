@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="banach.kam.productionManager.controller.AddEditUserController">
+   <children>
+      <Label layoutX="53.0" layoutY="33.0" text="Imię" />
+      <Label layoutX="53.0" layoutY="66.0" text="Nazwisko" />
+      <Label layoutX="53.0" layoutY="98.0" text="Login" />
+      <Label layoutX="53.0" layoutY="131.0" text="Hasło" />
+      <Label layoutX="53.0" layoutY="164.0" text="Powtórz hasło" />
+      <Label layoutX="53.0" layoutY="196.0" text="Rola" />
+      <TextField fx:id="firstName" layoutX="204.0" layoutY="28.0" />
+      <TextField fx:id="lastName" layoutX="204.0" layoutY="61.0" />
+      <TextField fx:id="login" layoutX="204.0" layoutY="93.0" />
+      <ComboBox fx:id="roles" layoutX="204.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" />
+      <CheckBox fx:id="active" layoutX="204.0" layoutY="230.0" mnemonicParsing="false" />
+      <Label layoutX="53.0" layoutY="231.0" text="Aktywny" />
+      <PasswordField fx:id="password" layoutX="204.0" layoutY="126.0" />
+      <PasswordField fx:id="rePassword" layoutX="204.0" layoutY="159.0" />
+      <Button fx:id="cancelButton" layoutX="342.0" layoutY="269.0" mnemonicParsing="false" onAction="#close" text="Anuluj">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="saveButton" layoutX="257.0" layoutY="269.0" mnemonicParsing="false" onAction="#save" text="Zapisz">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

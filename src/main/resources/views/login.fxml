@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="banach.kam.productionManager.controller.LoginController">
+   <children>
+      <AnchorPane layoutX="350.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="320.0" style="-fx-border-color: black;">
+         <children>
+            <TextField fx:id="user" layoutX="15.0" layoutY="204.0" prefHeight="26.0" prefWidth="290.0" />
+            <Label layoutX="15.0" layoutY="184.0" text="Login">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="235.0" text="Hasło">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="loginButton" layoutX="37.0" layoutY="301.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="112.0" text="Zaloguj" />
+            <Button fx:id="closeButton" layoutX="177.0" layoutY="301.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="112.0" text="Anuluj" />
+            <ImageView fitHeight="150.0" fitWidth="122.0" layoutX="99.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../login.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="password" layoutX="15.0" layoutY="255.0" prefHeight="26.0" prefWidth="290.0" />
+         </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+      </AnchorPane>
+      <ImageView fitHeight="166.0" fitWidth="306.0" layoutX="28.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../login2.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="28.0" layoutY="32.0" prefHeight="16.0" prefWidth="284.0" text="Panel logowania">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="usersButton" layoutX="115.0" layoutY="333.0" mnemonicParsing="false" onAction="#showUserManagementDialog" prefHeight="26.0" prefWidth="112.0" text="Użytkownicy" visible="false" />
+   </children>
+   <opaqueInsets>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </opaqueInsets>
+</AnchorPane>

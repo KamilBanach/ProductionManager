@@ -1,26 +1,32 @@
 package banach.kam.productionManager.controller;
 
 import banach.kam.productionManager.domain.AuthUserDB;
+import banach.kam.productionManager.domain.enums.EView;
 import banach.kam.productionManager.service.LoginService;
+import banach.kam.productionManager.utils.ViewUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class LoginController {
 
+    private Parent usersPane ;
+    private Stage usersDialog ;
+
     @FXML private TextField user;
     @FXML private PasswordField password;
-    @FXML private Button closeButton;
+    @FXML private Button usersButton;
 
     @Autowired
     private LoginService loginService;
@@ -36,17 +42,25 @@ public class LoginController {
     }
 
     private void showBadCredentialsAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("Błąd");
-        alert.setHeaderText("Nieprawidłowa nazwa użytkownika lub hasło");
-        alert.setContentText("Wprowadź prawidłowe dane logowania");
+        String title = "Błąd";
+        String header = "Nieprawidłowa nazwa użytkownika lub hasło";
+        String content = "Wprowadź prawidłowe dane logowania";
+        Alert alert = ViewUtils.createAlert(title, header, content, Alert.AlertType.ERROR);
         alert.showAndWait();
     }
 
     @FXML
     public void exit() {
-        ((Stage) closeButton.getScene().getWindow()).close();
+        ((Stage) usersButton.getScene().getWindow()).close();
     }
 
+    @FXML
+    public void showUserManagementDialog() throws IOException {
+        Stage usersDialog = ViewUtils.createDialog(EView.USERS, usersButton.getScene().getWindow());
+        usersDialog.show();
+    }
+
+    public void setUsersButtonVisibility(boolean shouldVisible) {
+        usersButton.setVisible(shouldVisible);
+    }
 }

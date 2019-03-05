@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class LoginServiceImpl implements LoginService {
 
+    private final AuthDao authDao;
+
     @Autowired
-    private AuthDao authDao;
+    public LoginServiceImpl(AuthDao authDao) {
+        this.authDao = authDao;
+    }
 
     @Override
     public boolean checkUserCredentials(String login, String password) {
