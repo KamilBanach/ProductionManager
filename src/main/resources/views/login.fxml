@@ -11,18 +11,18 @@
       <AnchorPane layoutX="350.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="320.0" style="-fx-border-color: black;">
          <children>
             <TextField fx:id="user" layoutX="15.0" layoutY="204.0" prefHeight="26.0" prefWidth="290.0" />
-            <Label layoutX="15.0" layoutY="184.0" text="Login">
+            <Label layoutX="15.0" layoutY="184.0" text="%label.login">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="235.0" text="Hasło">
+            <Label layoutX="15.0" layoutY="235.0" text="%label.password">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="loginButton" layoutX="37.0" layoutY="301.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="112.0" text="Zaloguj" />
-            <Button fx:id="closeButton" layoutX="177.0" layoutY="301.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="112.0" text="Anuluj" />
+            <Button fx:id="loginButton" layoutX="37.0" layoutY="301.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="112.0" text="%button.login" />
+            <Button fx:id="closeButton" layoutX="177.0" layoutY="301.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="112.0" text="%button.close" />
             <ImageView fitHeight="150.0" fitWidth="122.0" layoutX="99.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../login.png" />
@@ -39,12 +39,12 @@
             <Image url="@../login2.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="28.0" layoutY="32.0" prefHeight="16.0" prefWidth="284.0" text="Panel logowania">
+      <Label alignment="CENTER" layoutX="28.0" layoutY="32.0" prefHeight="16.0" prefWidth="284.0" text="%login.panel.title">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Button fx:id="usersButton" layoutX="115.0" layoutY="333.0" mnemonicParsing="false" onAction="#showUserManagementDialog" prefHeight="26.0" prefWidth="112.0" text="Użytkownicy" visible="false" />
+      <Button fx:id="usersButton" layoutX="115.0" layoutY="333.0" mnemonicParsing="false" onAction="#showUserManagementDialog" prefHeight="26.0" prefWidth="112.0" text="%button.users" visible="false" />
    </children>
    <opaqueInsets>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

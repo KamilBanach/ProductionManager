@@ -23,6 +23,7 @@ public class ViewUtils {
         FXMLLoader loader = new FXMLLoader();
         loader.setControllerFactory(getContext()::getBean);
         loader.setLocation(getResource(view.getPath()));
+        loader.setResources(ResourceProvider.getLocalizationBundle());
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         Stage stage = new Stage();

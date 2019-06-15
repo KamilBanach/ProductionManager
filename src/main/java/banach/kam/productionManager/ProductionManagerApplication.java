@@ -2,6 +2,7 @@ package banach.kam.productionManager;
 
 import banach.kam.productionManager.controller.LoginController;
 import banach.kam.productionManager.utils.ApplicationContextProvider;
+import banach.kam.productionManager.utils.ResourceProvider;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +29,7 @@ public class ProductionManagerApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		fxmlLoader.setLocation(getClass().getResource("/views/login.fxml"));
+		fxmlLoader.setResources(ResourceProvider.getLocalizationBundle());
 		rootNode = fxmlLoader.load();
         stage.setTitle("Logowanie");
         Scene scene = new Scene(rootNode, 700, 400);

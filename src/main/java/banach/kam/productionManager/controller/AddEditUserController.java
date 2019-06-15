@@ -3,6 +3,7 @@ package banach.kam.productionManager.controller;
 import banach.kam.productionManager.domain.AuthUserDB;
 import banach.kam.productionManager.domain.enums.EAuthUserRole;
 import banach.kam.productionManager.service.AuthUserService;
+import banach.kam.productionManager.utils.I18nUtils;
 import banach.kam.productionManager.utils.PasswordUtils;
 import banach.kam.productionManager.utils.ViewUtils;
 import javafx.collections.FXCollections;
@@ -29,6 +30,7 @@ public class AddEditUserController implements Initializable {
 
     private final AuthUserService authUserService;
     private final AuthManagementController authManagementController;
+    private AuthUserDB editedUser;
 
     @Autowired
     public AddEditUserController(AuthUserService authUserService, AuthManagementController authManagementController) {
@@ -38,7 +40,21 @@ public class AddEditUserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        roles.setItems(FXCollections.observableArrayList(EAuthUserRole.values()));
+        if (authManagementController.isEditMode()) {
+            editedUser = authManagementController.getAuthUserTable().getSelectionModel().getSelectedItem();
+            fillComponents();
+        } else {
+            roles.setItems(FXCollections.observableArrayList(EAuthUserRole.values()));
+        }
+
+    }
+
+    private void fillComponents() {
+        firstName.setText(editedUser.getFirstName());
+        lastName.setText(editedUser.getLastName());
+        login.setText(editedUser.getLogin());
+        roles.getSelectionModel().select(editedUser.getRole());
+        active.setSelected(editedUser.getActive());
     }
 
     @FXML
@@ -55,10 +71,9 @@ public class AddEditUserController implements Initializable {
     }
 
     private void showWrongPasswordAlert() {
-        String title = "Błąd";
-        String header = "Nieprawidłowe hasło";
-        String content = "Wprowadź prawidłowe hasło";
-        Alert alert = ViewUtils.createAlert(title, header, content, Alert.AlertType.ERROR);
+        String title = I18nUtils.getLabel("alert.error.title");
+        String content = I18nUtils.getLabel("dialog.login.password.retype.content");
+        Alert alert = ViewUtils.createAlert(title, null, content, Alert.AlertType.ERROR);
         alert.showAndWait();
     }
 
@@ -69,6 +84,7 @@ public class AddEditUserController implements Initializable {
     private AuthUserDB getEntityToSave() {
         String salt = PasswordUtils.getSalt(30);
         return AuthUserDB.builder()
+                .id(editedUser == null ? null : editedUser.getId())
                 .firstName(firstName.getText())
                 .lastName(lastName.getText())
                 .login(login.getText())

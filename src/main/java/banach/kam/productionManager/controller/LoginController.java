@@ -3,6 +3,7 @@ package banach.kam.productionManager.controller;
 import banach.kam.productionManager.domain.AuthUserDB;
 import banach.kam.productionManager.domain.enums.EView;
 import banach.kam.productionManager.service.LoginService;
+import banach.kam.productionManager.utils.I18nUtils;
 import banach.kam.productionManager.utils.ViewUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,11 +43,10 @@ public class LoginController {
     }
 
     private void showBadCredentialsAlert() {
-        String title = "Błąd";
-        String header = "Nieprawidłowa nazwa użytkownika lub hasło";
-        String content = "Wprowadź prawidłowe dane logowania";
-        Alert alert = ViewUtils.createAlert(title, header, content, Alert.AlertType.ERROR);
-        alert.showAndWait();
+        String title = I18nUtils.getLabel("alert.error.title");
+        String content = I18nUtils.getLabel("dialog.login.fail.content");
+        Alert alert = ViewUtils.createAlert(title, null, content, Alert.AlertType.ERROR);
+        alert.show();
     }
 
     @FXML

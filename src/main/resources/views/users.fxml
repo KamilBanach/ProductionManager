@@ -7,15 +7,15 @@
     <children>
         <TableView fx:id="authUserTable" layoutX="7.0" layoutY="7.0" prefHeight="250.0" prefWidth="686.0">
             <columns>
-                <TableColumn fx:id="id" prefWidth="70.0" text="Id" />
-                <TableColumn fx:id="firstName" prefWidth="136.0" text="Imię" />
-                <TableColumn fx:id="lastName" prefWidth="161.0" text="Nazwisko" />
-                <TableColumn fx:id="login" prefWidth="136.0" text="Login" />
-                <TableColumn fx:id="role" prefWidth="95.0" text="Rola" />
-                <TableColumn fx:id="active" minWidth="6.0" prefWidth="87.0" text="Aktywny" />
+                <TableColumn fx:id="id" prefWidth="70.0" text="%table.column.id" />
+                <TableColumn fx:id="firstName" prefWidth="136.0" text="%table.column.first.name" />
+                <TableColumn fx:id="lastName" prefWidth="161.0" text="%table.column.last.name" />
+                <TableColumn fx:id="login" prefWidth="136.0" text="%table.column.login" />
+                <TableColumn fx:id="role" prefWidth="95.0" text="%table.column.role" />
+                <TableColumn fx:id="active" minWidth="6.0" prefWidth="87.0" text="%table.column.active" />
             </columns>
         </TableView>
-      <Button fx:id="refreshButton" layoutX="496.0" layoutY="272.0" mnemonicParsing="false" onAction="#refreshTable" text="Odświerz">
+      <Button fx:id="refreshButton" layoutX="496.0" layoutY="272.0" mnemonicParsing="false" onAction="#refreshTable" text="%button.refresh">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +24,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="editButton" layoutX="412.0" layoutY="272.0" mnemonicParsing="false" onAction="#editUser" text="Edytuj">
+      <Button fx:id="editButton" layoutX="412.0" layoutY="272.0" mnemonicParsing="false" onAction="#editUser" text="%button.edit">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,7 +33,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addButton" layoutX="332.0" layoutY="272.0" mnemonicParsing="false" onAction="#addNewUser" text="Dodaj">
+      <Button fx:id="addButton" layoutX="332.0" layoutY="272.0" mnemonicParsing="false" onAction="#addNewUser" text="%button.add">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,7 +42,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="closeButton" layoutX="598.0" layoutY="272.0" mnemonicParsing="false" onAction="#close" text="Zamknij">
+      <Button fx:id="closeButton" layoutX="598.0" layoutY="272.0" mnemonicParsing="false" onAction="#close" text="%button.close">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

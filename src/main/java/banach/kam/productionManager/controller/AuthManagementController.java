@@ -4,23 +4,27 @@ import banach.kam.productionManager.domain.AuthUserDB;
 import banach.kam.productionManager.domain.enums.EAuthUserRole;
 import banach.kam.productionManager.domain.enums.EView;
 import banach.kam.productionManager.service.AuthUserService;
+import banach.kam.productionManager.utils.I18nUtils;
 import banach.kam.productionManager.utils.ViewUtils;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Controller
+@Slf4j
 public class AuthManagementController implements Initializable {
 
     @FXML private TableView<AuthUserDB> authUserTable;
@@ -32,6 +36,7 @@ public class AuthManagementController implements Initializable {
     @FXML private TableColumn<AuthUserDB, Boolean> active;
 
     private final AuthUserService authUserService;
+    private boolean editMode;
 
     @Autowired
     public AuthManagementController(AuthUserService authUserService) {
@@ -55,23 +60,21 @@ public class AuthManagementController implements Initializable {
     }
 
     @FXML
-    public void addNewUser() throws IOException {
-        Stage usersDialog = ViewUtils.createDialog(EView.ADD_EDIT_USER, authUserTable.getScene().getWindow());
-        usersDialog.show();
+    public void addNewUser() {
+        editMode = false;
+        createAndShowUsersDialog();
     }
 
     @FXML
     public void editUser() {
-        String title = "Uwaga";
-        String content = "Czy na pewno usunąć wskazanego użytkownika?";
-        Alert alert = ViewUtils.createConfirmAlert(title, null, content);
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-            AuthUserDB authUserDB = authUserTable.getSelectionModel().getSelectedItem();
-            authUserService.deleteById(authUserDB.getId());
-            authUserTable.getItems().removeAll(authUserDB);
-            authUserTable.refresh();
-        } else System.out.println("xxx");
+        if (authUserTable.getSelectionModel().isEmpty()) {
+            String title = I18nUtils.getLabel("dialog.user.edit.fail.title");
+            String content = I18nUtils.getLabel("dialog.user.edit.fail.content");
+            ViewUtils.createAlert(title, null, content, Alert.AlertType.WARNING);
+        } else {
+            editMode = true;
+            createAndShowUsersDialog();
+        }
     }
 
     @FXML
@@ -85,7 +88,22 @@ public class AuthManagementController implements Initializable {
         ((Stage) authUserTable.getScene().getWindow()).close();
     }
 
-    public TableView getAuthUserTable() {
+    public TableView<AuthUserDB> getAuthUserTable() {
         return authUserTable;
+    }
+
+    public boolean isEditMode() {
+        return editMode;
+    }
+
+    private void createAndShowUsersDialog() {
+        Stage usersDialog;
+        try {
+            usersDialog = ViewUtils.createDialog(EView.ADD_EDIT_USER, authUserTable.getScene().getWindow());
+        } catch (IOException ex) {
+            log.error("View create error " + ex.getMessage());
+            return;
+        }
+        usersDialog.show();
     }
 }
